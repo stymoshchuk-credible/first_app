@@ -1,0 +1,41 @@
+<%= form_with(model: tickets) do |form| %>
+ 
+  <%= form.hidden_field :bus_id, value: @bus.id %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seat %>
+    <%#= form.text_field :seat_id_seq %>
+    <%= form.select :seat_id_seq, options_for_select(@bus.available_seats)%>
+    <%#= form.select :bus_id, Bus.all.collect { |b| [ b.number_of_seats, b.id ] }, include_blank: true %>
+  </div>
+
+<%# <div class="field"> %>
+    <%# <%= form.label :bus_name %>
+    <%# <%= form.select :bus_id, Bus.all.collect { |b| [ b.bus_name, b.id ] }, include_blank: true %>
+<%# </div> %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_paid %>
+
+    <%= form.text_field :price_paid, value: @bus.ticket_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Buses</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Bus name</th>
+    <th>Seats number</th>
+    <th>Ticket's price</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @buses.each do |bus| %>
+  <tr>
+    <td><%= link_to(bus.bus_name, tickets_path(bus_id: bus.id))%></td>
+    <td><%= bus.rest_seats %></td>
+    <td><%= bus.ticket_price %></td>
+    <td><%= link_to 'Show', bus %></td>
+    <td><%= link_to 'Edit', edit_bus_path(bus) %></td>
+    <td><%= link_to 'Destroy', bus, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Bus', new_bus_path %>
+<%= link_to 'All Tickets', tickets_path %>
