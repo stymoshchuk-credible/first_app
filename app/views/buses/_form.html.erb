@@ -1,0 +1,34 @@
+<%= form_with(model: bus) do |form| %>
+  <% if bus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bus.errors.count, "error") %>
+        prohibited this bus from being saved:</h2>
+
+      <ul>
+        <% bus.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :bus_name %>
+    <%= form.text_field :bus_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_seats %>
+    <%= form.text_field :number_of_seats %>
+    <%#= form.select :number_of_seats, options_for_select(0..@bus.number_of_seats) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ticket_price %>
+    <%= form.text_field :ticket_price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

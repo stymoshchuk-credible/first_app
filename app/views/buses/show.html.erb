@@ -1,0 +1,20 @@
+<p id="notice"><%= notice%></p>
+
+<p>
+  <strong>Bus name:</strong>
+  <%= @bus.bus_name %>
+</p>
+<p>
+  <strong>Seats number:</strong>
+  <%= @bus.rest_seats%>
+</p>
+<p>
+  <strong>Ticket's price:</strong>
+  <%= @bus.ticket_price %>
+</p>
+
+<%= render :partial => "tickets/form", :locals => {:tickets=>Ticket.new(:bus_id=>@bus.id)} %>
+<%= render :partial => "tickets/tickets_list", :locals => {:tickets=>@bus.tickets} %>
+<%#= render "tickets/form", ticket: @ticket %>
+<%= link_to 'Edit', edit_bus_path(@bus) %>
+<%= link_to 'Back', bus_path %>
