@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_09_02_095109) do
 
-  create_table "buses", force: :cascade do |t|
+  create_table "buses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "bus_name"
     t.integer "number_of_seats"
     t.datetime "created_at", precision: 6, null: false
@@ -20,29 +20,17 @@ ActiveRecord::Schema.define(version: 2021_09_02_095109) do
     t.integer "ticket_price"
   end
 
-  create_table "tickets", force: :cascade do |t|
+  create_table "tickets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "seat_id_seq"
     t.text "address"
-    t.decimal "price_paid"
+    t.decimal "price_paid", precision: 10
     t.string "email_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "phone"
-    t.integer "bus_id"
+    t.bigint "bus_id"
     t.index ["bus_id"], name: "index_tickets_on_bus_id"
-  end
-
-  create_table "tickets_buses", force: :cascade do |t|
-    t.string "name"
-    t.string "seat_id_seq"
-    t.integer "bus_id"
-    t.text "address"
-    t.decimal "price_paid"
-    t.string "email_address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["bus_id"], name: "index_tickets_buses_on_bus_id"
   end
 
 end

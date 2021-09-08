@@ -6,28 +6,23 @@
 #
 default: &default
   adapter: mysql2
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   username: root
-  password:
+  password: Solo1234
+  host: localhost
 
 development:
   <<: *default
-  adapter: mysql
-  database: for_project
-  host: localhost
-  username: root
-  password: Solo1234
-  encoding: utf8
+  database: first_development
 
-# pool: <%#= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: for_project
+  database: first_test
 
 production:
   <<: *default
-  database: mysql
+  database: first_production
