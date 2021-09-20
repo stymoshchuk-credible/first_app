@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'schedule_days/index'
+  get 'schedule_days/show'
+  get 'schedule_days/new'
+  get 'schedule_days/edit'
+  require 'sidekiq/web'
+
+  Rails.application.routes.draw do
+    get 'schedule_days/index'
+    get 'schedule_days/show'
+    get 'schedule_days/new'
+    get 'schedule_days/edit'
+
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
   # get '/tickets' => 'tickets#index'
   # get '/ticket/:id' => 'tickets#show', as: :ticket
   # get '/tickets/new' => 'tickets#new', as: :new_ticket
@@ -11,6 +27,14 @@ Rails.application.routes.draw do
   # get 'home/index'
   resources :tickets
   resources :buses
+  resources :stations
+  resources :operations, only: [:index]
+  resources :buses_schedules
+  resources :schedule_days
+  resources :schedule_stations
+
+  get 'home/index'
+  get '/update_ticket_price' => 'operations#update_ticket_price'
 
   # get '/tickets/:id', action: 'show', controller: 'buses'
   # get '/tickets', action: 'edit', controller: 'tickets'

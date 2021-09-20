@@ -22,6 +22,11 @@ class BusesController < ApplicationController
   def edit
   end
 
+  def update_ticket_price
+    Tickets::UpdateTicketsPriceService.new.call
+    redirect_to :index
+  end
+
   # def find
   #   @buses_search =  Bus.find_by_bus_name(params[:search_string])
   # end

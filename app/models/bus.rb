@@ -1,5 +1,6 @@
 class Bus < ApplicationRecord
   has_many :tickets, dependent: :destroy
+  has_many :buses_schedules
 
   def available_seats
     all_seats = (1..number_of_seats).to_a.map(&:to_s)

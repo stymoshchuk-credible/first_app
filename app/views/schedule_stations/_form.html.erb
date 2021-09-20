@@ -1,0 +1,23 @@
+<%= form_with(model: schedule_station, url: schedule_stations_path) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :station_name %>
+    <%= form.select :station_id, Station.all.collect { |s| [ s.station_name, s.id ] }, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival %>
+    <%= form.text_field :arrival %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departure %>
+    <%= form.text_field :departure %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

@@ -10,14 +10,14 @@
   <div class="field">
     <%= form.label :seat %>
     <%#= form.text_field :seat_id_seq %>
-    <%= form.select :seat_id_seq, options_for_select(@bus.available_seats)%>
+    <%= form.select :seat_id_seq, options_for_select(@bus.available_seats) %>
     <%#= form.select :bus_id, Bus.all.collect { |b| [ b.number_of_seats, b.id ] }, include_blank: true %>
   </div>
 
-<%# <div class="field"> %>
-    <%# <%= form.label :bus_name %>
-    <%# <%= form.select :bus_id, Bus.all.collect { |b| [ b.bus_name, b.id ] }, include_blank: true %>
-<%# </div> %>
+<!--<div class="field">-->
+     <%#= form.label :bus_name %>
+     <%#= form.select :bus_id, Bus.all.collect { |b| [ b.bus_name, b.id ] }, include_blank: true %>
+<!--</div>-->
 
   <div class="field">
     <%= form.label :address %>

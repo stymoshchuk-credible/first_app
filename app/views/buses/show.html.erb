@@ -13,8 +13,10 @@
   <%= @bus.ticket_price %>
 </p>
 
+
+<%= link_to "Create", new_buses_schedule_path  %>
+<%= link_to "Schedule Stations", new_schedule_station_path  %>
 <%= render :partial => "tickets/form", :locals => {:tickets=>Ticket.new(:bus_id=>@bus.id)} %>
 <%= render :partial => "tickets/tickets_list", :locals => {:tickets=>@bus.tickets} %>
-<%#= render "tickets/form", ticket: @ticket %>
 <%= link_to 'Edit', edit_bus_path(@bus) %>
 <%= link_to 'Back', bus_path %>
